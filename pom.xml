@@ -335,6 +335,30 @@
 			<!-- <resource> <directory>src/test/resources</directory> <excludes> <exclude>*.docx</exclude>
 				</excludes> </resource> -->
 		</resources>
+    <extensions>
+    <!-- local release -->
+    <!-- mvn clean deploy -Dmaven.test.skip -Dmaven.javadoc.skip -DaltDeploymentRepository=genix-release::default::scp://wayne.genixventures.com/home/maven-proxy/target/repo-local -->
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-http</artifactId>
+        <version>2.8</version>
+      </extension>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-ssh</artifactId>
+        <version>2.8</version>
+      </extension>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-file</artifactId>
+        <version>2.8</version>
+      </extension>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-ssh-external</artifactId>
+        <version>2.8</version>
+      </extension>
+    </extensions>
 	</build>
 	<reporting>
 		<plugins>
