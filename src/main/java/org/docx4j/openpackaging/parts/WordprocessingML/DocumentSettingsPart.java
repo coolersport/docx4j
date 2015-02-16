@@ -20,6 +20,7 @@
 
 package org.docx4j.openpackaging.parts.WordprocessingML;
 
+import org.docx4j.XmlUtils;
 import org.docx4j.jaxb.Context;
 import org.docx4j.openpackaging.exceptions.Docx4JException;
 import org.docx4j.openpackaging.exceptions.InvalidFormatException;
