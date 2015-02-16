@@ -249,7 +249,8 @@ public abstract class JaxbXmlPart<E> extends Part {
 		}
 		
 		// Do the replacement
-		jaxbElement = (E)XmlUtils.unmarshallFromTemplate(wmlTemplateString, mappings);
+		jaxbElement = (E)XmlUtils.unwrap(
+							XmlUtils.unmarshallFromTemplate(wmlTemplateString, mappings, jc));
 		
 	}
 	
@@ -343,6 +344,8 @@ public abstract class JaxbXmlPart<E> extends Part {
     	
 		try {
 			Marshaller marshaller = jc.createMarshaller();
+			marshaller.setProperty("jaxb.formatted.output", true);
+			
 			NamespacePrefixMapperUtils.setProperty(marshaller, namespacePrefixMapper);
 			
 			log.info("marshalling " + this.getClass().getName() );	
