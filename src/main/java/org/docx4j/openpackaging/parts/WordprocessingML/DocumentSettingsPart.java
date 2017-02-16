@@ -31,6 +31,7 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.List;
 
+import org.docx4j.XmlUtils;
 import org.docx4j.jaxb.Context;
 import org.docx4j.jaxb.McIgnorableNamespaceDeclarator;
 import org.docx4j.openpackaging.exceptions.Docx4JException;
@@ -94,20 +95,21 @@ public final class DocumentSettingsPart extends JaxbXmlPartXPathAware<CTSettings
 		 */
 
 		boolean needW14 = false;
-		if (this.jaxbElement.getDocId14()!=null) {
+        CTSettings e = (CTSettings) XmlUtils.unwrap(this.jaxbElement);
+		if (e.getDocId14()!=null) {
 			needW14 = true;
-		} else if (this.jaxbElement.getConflictMode() !=null) {
+		} else if (e.getConflictMode() !=null) {
 			needW14 = true;
-		} else if (this.jaxbElement.getDiscardImageEditingData() !=null) {
+		} else if (e.getDiscardImageEditingData() !=null) {
 			needW14 = true;
-		} else if (this.jaxbElement.getDefaultImageDpi() !=null) {
+		} else if (e.getDefaultImageDpi() !=null) {
 			needW14 = true;
 		}
 		
 		boolean needW15 = false;		
-		if (this.jaxbElement.getChartTrackingRefBased()!=null) {
+		if (e.getChartTrackingRefBased()!=null) {
 			needW15 = true;
-		} else if (this.jaxbElement.getDocId15() !=null) {
+		} else if (e.getDocId15() !=null) {
 			needW15 = true;
 		}
 		
@@ -123,7 +125,7 @@ public final class DocumentSettingsPart extends JaxbXmlPartXPathAware<CTSettings
 		
 		namespacePrefixMapper.setMcIgnorable(mceIgnorableVal );
 		
-		this.jaxbElement.setIgnorable(mceIgnorableVal);
+		e.setIgnorable(mceIgnorableVal);
 				
     }
 	
