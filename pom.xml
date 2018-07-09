@@ -10,7 +10,7 @@
   
 	<groupId>org.docx4j</groupId>
 	<artifactId>docx4j</artifactId>
-	<version>3.3.7</version>
+	<version>3.3.7.p1</version>
 	<packaging>jar</packaging>
 	<name>docx4j</name>
 	
@@ -41,6 +41,20 @@
 	  
 	
 	<build>
+    <extensions>
+    <!-- local release -->
+    <!-- mvn clean deploy -Dmaven.test.skip -Dmaven.javadoc.skip -DaltDeploymentRepository=genix-releases::default::https://nexus.intranet.genixventures.com/repository/maven-releases/ -->
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-http</artifactId>
+        <version>3.1.0</version>
+      </extension>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-webdav-jackrabbit</artifactId>
+        <version>3.1.0</version>
+      </extension>
+    </extensions>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<outputDirectory>bin</outputDirectory><!--  for a clean jar, be sure to avoid mixing mvn and eclipse output -->
